@@ -1,0 +1,124 @@
+/* ===== 0. PREVENT HORIZONTAL JUMP ===== */
+html {
+  overflow-y: scroll;
+}
+
+/* ===== 1. GLOBAL & NAVBAR BASE ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #ffff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 4000;
+  width: 100%;
+  height: 85px; 
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* ===== 2. END-TO-END DESKTOP GRID ===== */
+.nav-content {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-content a:first-child {
+  margin-right: auto; 
+  padding-left: 5px;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.nav-content a:not(:first-child), 
+.nav-content button:not(.close-btn-style) {
+  flex: 0 0 110px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(13, 69, 68);
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  /* Added 3px gap between right-side items */
+  margin: 0 0 0 3px; 
+}
+
+.nav-content > *:last-child {
+  margin-right: 2px !important;
+  flex: 0 0 110px;
+}
+
+.navbar a:hover, 
+.navbar button:not(.close-btn-style):hover {
+  color: #36d2d3;
+  background: #fafafa;
+}
+
+/* ===== 3. RESPONSIVENESS & HAMBURGER ===== */
+@media (max-width: 1024px) {
+  .nav-content a:not(:first-child) {
+    display: none;
+  }
+  .nav-content {
+    justify-content: space-between;
+  }
+  .nav-content a:first-child {
+    padding-left: 10px;
+  }
+  .nav-content button:not(.close-btn-style) {
+    display: flex;
+    flex: 0 0 60px;
+    margin-right: 2px !important; 
+    margin-left: 0; /* Resetting gap for mobile hamburger */
+  }
+}
+
+/* ===== 4. AUTH MODAL OVERLAY ===== */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 110000;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close-btn-style {
+  position: absolute;
+  top: 10px; right: 10px;
+  cursor: pointer;
+}
+
+/* ===== 5. ACTIVE LINK LOGIC (BRAND COLOR) ===== */
+.nav-content a.active,
+.nav-content button.active {
+  color: #36d2d3 !important;
+}
